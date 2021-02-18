@@ -1,16 +1,18 @@
 package org.engineering.jpaday02task.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class Person {
+public class Person implements Serializable{
 	private static final long serialVersionUID = 1802021120500L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private int pid;
+	private String pid;
 	private String firstName;
 	private String lastName;
 	
@@ -18,7 +20,7 @@ public class Person {
 	@JoinColumn(name="bornCity")
 	private City city;
 
-	public Person(Long id, int pid, String firstName, String lastName, City city) {
+	public Person(Long id, String pid, String firstName, String lastName, City city) {
 		super();
 		this.id = id;
 		this.pid = pid;
@@ -39,11 +41,11 @@ public class Person {
 		this.id = id;
 	}
 
-	public int getPid() {
+	public String getPid() {
 		return pid;
 	}
 
-	public void setPid(int pid) {
+	public void setPid(String pid) {
 		this.pid = pid;
 	}
 
